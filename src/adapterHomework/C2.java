@@ -13,33 +13,34 @@ import org.json.simple.parser.ParseException;
  * @author Alin Stanciu
  *
  */
-public class C2 {
-
-	private String jsonString = null;
-	
+public class C2 implements IC2{
 	/**
 	 * 
 	 */
-	public C2(String jsonString) 
-	{
+	
+	private String jsonString = null;
+	
+	public C2(String jsonString) {
 		// TODO Auto-generated constructor stub
 		this.jsonString = jsonString;
 	}
 	
-	public Long sumOfValuesFromJsonString()
-	{
-		return sumOfValues(parseJsonString());
+	@Override
+	public Long computeSum(String jsonString) {
+		return sumOfValuesFromJsonString(jsonString);
 	}
 	
-	private ArrayList<Long> parseJsonString()
-	{
+	@Override
+	public Long sumOfValuesFromJsonString(String jsonString) {
+		return sumOfValues(parseJsonString(jsonString));
+	}
+	
+	private ArrayList<Long> parseJsonString(String jsonString) {
 		Object obj = null;
-		try 
-		{
+		try {
 			obj = new JSONParser().parse(jsonString);
 		}
-		catch (ParseException exception) 
-		{
+		catch (ParseException exception) {
 			// TODO Auto-generated catch block
 			exception.printStackTrace();
 		} 
@@ -55,12 +56,10 @@ public class C2 {
         Long n2 = (Long) jsonObj.get("n2"); 
         array.add(n2);
         
-        return array;
-        
+        return array; 
 	}
 	
-	private Long sumOfValues(ArrayList<Long> array)
-	{
+	private Long sumOfValues(ArrayList<Long> array) {
 		Long sumOfValues = 0L;
 		
 		for (Long long1 : array) {
@@ -68,7 +67,6 @@ public class C2 {
 		}
 		
 		return sumOfValues;
-		
 	}
 
 }

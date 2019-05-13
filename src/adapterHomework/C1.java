@@ -9,10 +9,9 @@ import java.util.Scanner;
 
 /**
  * @author Alin Stanciu
- *
+ * @since May 13, 2019
  */
-public class C1 
-{
+public class C1 implements IC1 {
 
 	private Integer n1;
 	private Integer n2;
@@ -24,13 +23,12 @@ public class C1
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Integer computeSumValueFromFile()
-	{
-		return readFromFile();
+	@Override
+	public Integer computeSumValueFromFile() {
+	    return readFromFile();
 	}
 	
-	private Integer sumOfArrayValues(ArrayList<Integer> array)
-	{
+	private Integer sumOfArrayValues(ArrayList<Integer> array) {
 		Integer sumOfArrayElements = 0;
 		
 		for (Integer integer : array) {
@@ -54,21 +52,15 @@ public class C1
 		return n2;
 	}
 
-	private Integer readFromFile()
-	{
+	private Integer readFromFile() {
 		File f = null;
 		Scanner scan = null;
 
-		try
-		{
+		try {
 		   f = new File("inputAdapter.txt");
 		   scan = new Scanner(f);
-		}
-		catch(Exception exception)
-		{
-		
+		} catch(Exception exception) {
 		   System.exit(0);
-		
 		}
 
 		ArrayList<Integer> x = new ArrayList<Integer>();
@@ -78,28 +70,20 @@ public class C1
 //		{
 //			x.add(scan.nextInt());
 //		}
-		if(scan.hasNext())
-		{
+		if (scan.hasNext()) {
 			this.n1 = scan.nextInt();
 			x.add(this.n1);
-		}
-		else 
-		{
+		} else {
 			System.exit(0);
 		}
 		
-		if(scan.hasNext())
-		{
+		if (scan.hasNext()) {
 			this.n2 = scan.nextInt();
 			x.add(this.n2);
-		} 
-		else 
-		{
+		} else {
 			System.exit(0);
 		}
 		
 		return sumOfArrayValues(x);
-
 	}
-
 }

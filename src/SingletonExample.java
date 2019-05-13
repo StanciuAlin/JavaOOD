@@ -32,6 +32,6 @@ public class SingletonExample {
 	{
 		System.out.println("Inside print Singleton, method B");
 	}
-	//Add comment to check my repo update
+	
 
 }
